@@ -1,0 +1,53 @@
+  <div class="col-md-6">
+				    	<div class="form-group">
+					      <select id="filter-cat">
+					      	<option value="/nash-katalog">Все категории</option>
+					      	[[pdoResources?
+							    &parents=`742`
+							    &depth=`0`
+							    &tpl=`@INLINE <option data-parent="[[+id]]" value="[[+uri]]">[[+pagetitle]]</option>`
+							    &sortby=`id`
+								&sortdir=`ASC`
+								&limit=`0`
+							]]
+					      </select>
+					      <label for="select" class="control-label">Выберите категорию</label><i class="bar"></i>
+				    	</div>
+				    </div>
+				    <div class="col-md-6">
+				    	<div class="form-group">
+					      <input type="text" name="query" id="filter-query" required="required"/>
+					      <label for="input" class="control-label">Что вы ищите?</label><i class="bar"></i>
+				    	</div>
+				    </div>
+				    <div class="col-md-4">
+				    	<section class="range-slider" id="facet-price-range-slider" data-options='{"output":{"prefix":""},"maxSymbol":""}'>
+							<input name="range-1" value="0" min="0" max="[[findMaxPrice]]" step="1" type="range">
+							<input name="range-2" value="[[findMaxPrice]]" min="0" max="[[findMaxPrice]]" step="1" type="range">
+						</section>
+						<input type="hidden" id="range-rice-sum" name="ms|price" value="0,[[findMaxPrice]]">
+				    </div>
+				    
+				    
+				    <div class="col-md-5">
+				    	<div class="form-group">
+					      <select id="filter-vendor">
+					      	<option value="all">Все производители</option>
+					      	[[msProducts?
+								&parents=`742`
+								&depth=`1`
+								&tpl=`@INLINE <option data-parent="[[+parent]]" value="[[+vendor]]">[[+vendor.name]]</option>`
+								&sortby=`id`
+								&sortdir=`ASC`
+							]]
+
+					       
+					      </select>
+					      
+					      <label for="select" class="control-label">Выберите производителя</label><i class="bar"></i>
+				    	</div>
+				    </div>
+				    <div class="col-md-3">
+				    	<a id="filter-btn" href="/nash-katalog" class="button btn-block"><span>поиск</span></a>
+				    </div>
+				  
